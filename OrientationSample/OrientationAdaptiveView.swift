@@ -8,7 +8,7 @@
 import SwiftUI
 
 enum Orientation {
-    case lanspace
+    case landspace
     case portrait
     case all
 
@@ -17,11 +17,11 @@ enum Orientation {
         case (.compact, .regular):
             self = .portrait
         case (.regular, .compact):
-            self = .lanspace
+            self = .landspace
         case (.regular, .regular):
             self = .all
         case (.compact, .compact):
-            self = .lanspace
+            self = .landspace
         default:
             self = .all
         }
@@ -30,25 +30,25 @@ enum Orientation {
 
 struct OrientationAdaptiveView<PortraitContent: View, LanspaceContent: View>: View {
     var portraitContent: PortraitContent
-    var lanspaceContent: LanspaceContent
+    var landspaceContent: LanspaceContent
 
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass
     @Environment(\.verticalSizeClass) private var verticalSizeClass
 
-    public init(@ViewBuilder portraitContent: () -> PortraitContent, @ViewBuilder lanspaceContent: () -> LanspaceContent) {
+    public init(@ViewBuilder portraitContent: () -> PortraitContent, @ViewBuilder landspaceContent: () -> LanspaceContent) {
         self.portraitContent = portraitContent()
-        self.lanspaceContent = lanspaceContent()
+        self.landspaceContent = landspaceContent()
     }
 
     var body: some View {
         let orient = Orientation(horizontal: horizontalSizeClass, vertical: verticalSizeClass)
         switch orient {
-        case .lanspace:
-            lanspaceContent
+        case .landspace:
+            landspaceContent
         case .portrait:
             portraitContent
         case .all:
-            lanspaceContent
+            landspaceContent
         }
     }
 }

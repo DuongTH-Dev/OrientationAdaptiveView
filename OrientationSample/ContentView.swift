@@ -20,8 +20,8 @@ struct ContentView: View {
                     .background(.green)
 
             })
-        } lanspaceContent: {
-            Text("Lanspace Screen")
+        } landspaceContent: {
+            Text("Landspace Screen")
             HStack(content: {
                 Text("Left")
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
